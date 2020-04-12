@@ -24,21 +24,21 @@ const covid19ImpactEstimator = (data) => {
   impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** factor);
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** factor);
 
-  impact.severeCasesByRequestedTime = (impact.infectionsByRequestedTime * 15) / 100;
-  severeImpact.severeCasesByRequestedTime = (severeImpact.infectionsByRequestedTime * 15) / 100;
+  impact.severeCasesByRequestedTime = Math.floor((impact.infectionsByRequestedTime * 15) / 100);
+  severeImpact.severeCasesByRequestedTime = Math.floor((severeImpact.infectionsByRequestedTime * 15) / 100);
 
-  impact.hospitalBedsByRequestedTime = (
-    (data.totalHospitalBeds * 35) / 100 - impact.severeCasesByRequestedTime);
-  severeImpact.hospitalBedsByRequestedTime = (
-    (data.totalHospitalBeds * 35) / 100 - severeImpact.severeCasesByRequestedTime);
+  impact.hospitalBedsByRequestedTime = Math.floor((
+    (data.totalHospitalBeds * 35) / 100 - impact.severeCasesByRequestedTime));
+  severeImpact.hospitalBedsByRequestedTime = Math.floor((
+    (data.totalHospitalBeds * 35) / 100 - severeImpact.severeCasesByRequestedTime));
 
-  impact.casesForICUByRequestedTime = (impact.infectionsByRequestedTime * 5) / 100;
-  severeImpact.casesForICUByRequestedTime = (severeImpact.infectionsByRequestedTime * 5) / 100;
+  impact.casesForICUByRequestedTime = Math.floor((impact.infectionsByRequestedTime * 5) / 100);
+  severeImpact.casesForICUByRequestedTime = Math.floor((severeImpact.infectionsByRequestedTime * 5) / 100);
 
-  impact.casesForVentilatorsByRequestedTime = (
-    impact.infectionsByRequestedTime * 2) / 100;
-  severeImpact.casesForVentilatorsByRequestedTime = (
-    severeImpact.infectionsByRequestedTime * 2) / 100;
+  impact.casesForVentilatorsByRequestedTime = Math.floor((
+    impact.infectionsByRequestedTime * 2) / 100);
+  severeImpact.casesForVentilatorsByRequestedTime = Math.floor((
+    severeImpact.infectionsByRequestedTime * 2) / 100);
 
   impact.dollarsInFlight = (
     (impact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation)
