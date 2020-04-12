@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Description" content="a simple single page web app that can allow the data passed to your estimator function to be
     inputed from a UI. ">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
         html,
         body {
@@ -25,7 +22,7 @@
             outline: none;
             font-family: Roboto, Arial, sans-serif;
             font-size: 14px;
-            color: #666;
+            color: black;
             line-height: 22px;
         }
 
@@ -42,11 +39,6 @@
 
         span {
             color: red;
-        }
-
-        .small {
-            font-size: 10px;
-            line-height: 18px;
         }
 
         .testbox {
@@ -101,71 +93,6 @@
             background: #fff;
         }
 
-        .day-visited,
-        .time-visited {
-            position: relative;
-        }
-
-        input[type="date"]::-webkit-inner-spin-button {
-            display: none;
-        }
-
-        input[type="time"]::-webkit-inner-spin-button {
-            margin: 2px 22px 0 0;
-        }
-
-        .day-visited i,
-        .time-visited i,
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            position: absolute;
-            top: 8px;
-            font-size: 20px;
-        }
-
-        .day-visited i,
-        .time-visited i {
-            right: 5px;
-            z-index: 1;
-            color: #a9a9a9;
-        }
-
-        [type="date"]::-webkit-calendar-picker-indicator {
-            right: 0;
-            z-index: 2;
-            opacity: 0;
-        }
-
-        .question-answer label {
-            display: block;
-            padding: 0 20px 10px 0;
-        }
-
-        .question-answer input {
-            width: auto;
-            margin-top: -2px;
-        }
-
-        th,
-        td {
-            width: 18%;
-            padding: 15px 0;
-            border-bottom: 1px solid #ccc;
-            text-align: center;
-            vertical-align: unset;
-            line-height: 18px;
-            font-weight: 400;
-            word-break: break-all;
-        }
-
-        .first-col {
-            width: 25%;
-            text-align: left;
-        }
-
-        textarea {
-            width: calc(100% - 6px);
-        }
-
         .btn-block {
             margin-top: 20px;
             text-align: center;
@@ -208,11 +135,6 @@
                 margin: 3.6%;
                 margin-bottom: 0;
                 display: inline-block;
-            }
-
-            th,
-            td {
-                word-break: keep-all;
             }
         }
     </style>
