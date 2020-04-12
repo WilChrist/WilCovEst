@@ -1,9 +1,22 @@
+
+const getPeriodInDays = (periodType, timeToElapse) => {
+  let res;
+  if (periodType === 'days') {
+    res = timeToElapse;
+  } else if (periodType === 'weeks') {
+    res = timeToElapse * 7;
+  } else {
+    res = timeToElapse * 30;
+  }
+  return res;
+};
+
 const covid19ImpactEstimator = (data) => {
   const impact = {};
   const severeImpact = {};
 
-  const periodInDays = data.periodType === 'days' ? data.timeToElapse : data.periodType === 'weeks' ? data.timeToElapse * 7 : data.timeToElapse * 30;
-  const factor = periodInDays / 3;
+  const periodInDays = getPeriodInDays(data.periodType, data.timeToElapse);
+  const factor = Math.floor(periodInDays / 3);
 
   impact.currentlyInfected = data.reportedCases * 10;
   severeImpact.currentlyInfected = data.reportedCases * 50;
@@ -37,20 +50,4 @@ const covid19ImpactEstimator = (data) => {
         * periodInDays;
   return { data, impact, severeImpact };
 };
-
-const result = covid19ImpactEstimator({
-  region: {
-    name: 'Africa',
-    avgAge: 19.7,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.71
-  },
-  periodType: 'days',
-  timeToElapse: 58,
-  reportedCases: 674,
-  population: 66622705,
-  totalHospitalBeds: 1380614
-});
-
-//console.log(result);
 export default covid19ImpactEstimator;
