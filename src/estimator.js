@@ -16,7 +16,7 @@ const covid19ImpactEstimator = (data) => {
   const severeImpact = {};
 
   const periodInDays = getPeriodInDays(data.periodType, data.timeToElapse);
-  const factor = Math.floor(periodInDays / 3);
+  const factor = Math.trunc(periodInDays / 3);
 
   impact.currentlyInfected = data.reportedCases * 10;
   severeImpact.currentlyInfected = data.reportedCases * 50;
@@ -24,24 +24,24 @@ const covid19ImpactEstimator = (data) => {
   impact.infectionsByRequestedTime = impact.currentlyInfected * (2 ** factor);
   severeImpact.infectionsByRequestedTime = severeImpact.currentlyInfected * (2 ** factor);
 
-  impact.severeCasesByRequestedTime = Math.floor((impact.infectionsByRequestedTime * 15) / 100);
-  severeImpact.severeCasesByRequestedTime = Math.floor(
+  impact.severeCasesByRequestedTime = Math.trunc((impact.infectionsByRequestedTime * 15) / 100);
+  severeImpact.severeCasesByRequestedTime = Math.trunc(
     (severeImpact.infectionsByRequestedTime * 15) / 100
   );
 
-  impact.hospitalBedsByRequestedTime = Math.floor((
-    (data.totalHospitalBeds * 35) / 100) - impact.severeCasesByRequestedTime);
-  severeImpact.hospitalBedsByRequestedTime = Math.floor((
-    (data.totalHospitalBeds * 35) / 100) - severeImpact.severeCasesByRequestedTime);
+  impact.hospitalBedsByRequestedTime = Math.trunc((
+    (data.totalHospitalBeds * 35) / 100 - impact.severeCasesByRequestedTime));
+  severeImpact.hospitalBedsByRequestedTime = Math.trunc((
+    (data.totalHospitalBeds * 35) / 100 - severeImpact.severeCasesByRequestedTime));
 
-  impact.casesForICUByRequestedTime = Math.floor((impact.infectionsByRequestedTime * 5) / 100);
-  severeImpact.casesForICUByRequestedTime = Math.floor(
+  impact.casesForICUByRequestedTime = Math.trunc((impact.infectionsByRequestedTime * 5) / 100);
+  severeImpact.casesForICUByRequestedTime = Math.trunc(
     (severeImpact.infectionsByRequestedTime * 5) / 100
   );
 
-  impact.casesForVentilatorsByRequestedTime = Math.floor((
+  impact.casesForVentilatorsByRequestedTime = Math.trunc((
     impact.infectionsByRequestedTime * 2) / 100);
-  severeImpact.casesForVentilatorsByRequestedTime = Math.floor((
+  severeImpact.casesForVentilatorsByRequestedTime = Math.trunc((
     severeImpact.infectionsByRequestedTime * 2) / 100);
 
   impact.dollarsInFlight = (
