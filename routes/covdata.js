@@ -73,7 +73,7 @@ module.exports = (server) => {
   });
   // Add Covdata
   server.post(
-    '/v1/on-covid-19',
+    '/api/v1/on-covid-19',
     async (req, res, next) => {
       const requestStart = Date.now();
       // Check for JSON
@@ -107,7 +107,7 @@ module.exports = (server) => {
 
   // Add Covdata Json
   server.post(
-    '/v1/on-covid-19/json',
+    '/api/v1/on-covid-19/json',
     async (req, res, next) => {
       const requestStart = Date.now();
       // Check for JSON
@@ -141,7 +141,7 @@ module.exports = (server) => {
 
   // Add Covdata Xml
   server.post(
-    '/v1/on-covid-19/xml',
+    '/api/v1/on-covid-19/xml',
     async (req, res, next) => {
       const requestStart = Date.now();
       // Check for JSON
