@@ -63,7 +63,7 @@ const covid19ImpactEstimator = (data) => {
 
 module.exports = (server) => {
   // Get Covdatas
-  server.get('/', async (req, res, next) => {
+  server.get('/api', async (req, res, next) => {
     try {
       const covdatas = await Covdata.find({});
       res.send(covdatas);
