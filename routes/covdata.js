@@ -75,7 +75,8 @@ module.exports = (server) => {
   // Get logs
   server.get('/api/v1/on-covid-19/logs', async (req, res, next) => {
     try {
-      res.send(logs);
+      res.setHeader('content-type', 'text/plain');
+      res.sendRow(logs);
       next();
     } catch (err) {
       return next(new errors.InvalidContentError(err));
