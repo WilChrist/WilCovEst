@@ -76,14 +76,14 @@ module.exports = (server) => {
   server.get('/api/v1/on-covid-19/logs', async (req, res, next) => {
     const requestStart = Date.now();
     try {
-      res.setHeader('Content-Type', 'text/plain');
+      res.setHeader('content-type', 'text/plain');
       res.sendRaw(logs);
       next();
     } catch (err) {
       return next(new errors.InvalidContentError(err));
     }
     res.on('finish', () => {
-        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  45ms`;
+      const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart).toString().padStart(2, 0)}ms`;
       logs += (`${tlog}`); logs += '\n';
       console.log(tlog);
     });
@@ -117,7 +117,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  30ms`;
+        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart).toString().padStart(2, 0)}ms`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
@@ -153,7 +153,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  45ms`;
+        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart).toString().padStart(2, 0)}ms`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
@@ -196,7 +196,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  28ms`;
+        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart).toString().padStart(2, 0)}ms`;
         logs += (`${tlog}`); logs += '\r\n';
         console.log(tlog);
       });
