@@ -111,7 +111,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${Date.now()}\t\t${req.url.substring(8)}\t\tdone in ${(Date.now() - requestStart).toFixed(2)} seconds`;
+        const tlog = `${Date.now()}\t\t${req.url.substring(8)}\t\tdone in ${(Date.now() - requestStart)} seconds`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
@@ -147,7 +147,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${Date.now()}\t\t${req.url.substring(8)}\t\tdone in ${(Date.now() - requestStart).toFixed(2)} seconds`;
+        const tlog = `${Date.now()}\t\t${req.url.substring(8)}\t\tdone in ${(Date.now() - requestStart)} seconds`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
@@ -190,7 +190,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${Date.now()}\t\t${req.url.substring(8)}\t\tdone in ${(Date.now() - requestStart).toFixed(2)} ms`;
+        const tlog = `${Date.now()}\t\t${req.url.substring(8)}\t\tdone in ${(Date.now() - requestStart)} ms`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
