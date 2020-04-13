@@ -76,7 +76,7 @@ module.exports = (server) => {
   server.get('/api/v1/on-covid-19/logs', async (req, res, next) => {
     const requestStart = Date.now();
     try {
-      res.setHeader('content-type', 'text/plain');
+      res.setHeader('Content-Type', 'text/plain');
       res.sendRaw(logs);
       next();
     } catch (err) {
@@ -189,7 +189,7 @@ module.exports = (server) => {
       const repFin = { data, impact, severeImpact };
       try {
         // await covdata.save();
-        res.setHeader('content-type', 'application/xml');
+        res.setHeader('Content-Type', 'application/xml');
         res.sendRaw(jsontoxmlconverter.toXML(repFin));
         next();
       } catch (err) {
