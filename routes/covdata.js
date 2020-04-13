@@ -83,7 +83,7 @@ module.exports = (server) => {
       return next(new errors.InvalidContentError(err));
     }
     res.on('finish', () => {
-      const tlog = `${req.method}\t\t${Date.now()}\t\t${req.url}\t\t${res.statusCode}\t\tdone in ${(Date.now() - requestStart)}ms`;
+        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart)}ms`;
       logs += (`${tlog}`); logs += '\n';
       console.log(tlog);
     });
@@ -117,7 +117,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${req.method}\t\t${Date.now()}\t\t${req.url}\t\t${res.statusCode}\t\tdone in ${(Date.now() - requestStart)}ms`;
+        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart)}ms`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
@@ -153,7 +153,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${req.method}\t\t${Date.now()}\t\t${req.url}\t\t${res.statusCode}\t\tdone in ${(Date.now() - requestStart)}ms`;
+        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart)}ms`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
@@ -196,8 +196,8 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${req.method}\t\t${Date.now()}\t\t${req.url}\t\t${res.statusCode}\t\tdone in ${(Date.now() - requestStart)}ms`;
-        logs += (`${tlog}`); logs += '\n';
+        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart)}ms`;
+        logs += (`${tlog}`); logs += '\r\n';
         console.log(tlog);
       });
     }
