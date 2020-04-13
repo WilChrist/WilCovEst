@@ -83,7 +83,7 @@ module.exports = (server) => {
       return next(new errors.InvalidContentError(err));
     }
     res.on('finish', () => {
-      const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart).toString().padStart(2, 0)}ms`;
+      const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart) <= 9 ? (Date.now() - requestStart).toString().padStart(2, 0) : (Date.now() - requestStart)}ms`;
       logs += (`${tlog}`); logs += '\n';
       console.log(tlog);
     });
@@ -117,7 +117,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart).toString().padStart(2, 0)}ms`;
+        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart) <= 9 ? (Date.now() - requestStart).toString().padStart(2, 0) : (Date.now() - requestStart)}ms`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
@@ -153,7 +153,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart).toString().padStart(2, 0)}ms`;
+        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart) <= 9 ? (Date.now() - requestStart).toString().padStart(2, 0) : (Date.now() - requestStart)}ms`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
@@ -196,7 +196,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart).toString().padStart(2, 0)}ms`;
+        const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart) <= 9 ? (Date.now() - requestStart).toString().padStart(2, 0) : (Date.now() - requestStart)}ms`;
         logs += (`${tlog}`); logs += '\r\n';
         console.log(tlog);
       });
