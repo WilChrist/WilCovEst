@@ -3,6 +3,7 @@ const errors = require('restify-errors');
 const jsontoxmlconverter = require('jstoxml');
 const Covdata = require('../models/covdata');
 
+let logs = '';
 const getPeriodInDays = (periodType, timeToElapse) => {
   let res;
   if (periodType === 'days') {
@@ -71,6 +72,15 @@ module.exports = (server) => {
       return next(new errors.InvalidContentError(err));
     }
   });
+  // Get logs
+  server.get('/api/v1/on-covid-19/logs', async (req, res, next) => {
+    try {
+      res.send(logs);
+      next();
+    } catch (err) {
+      return next(new errors.InvalidContentError(err));
+    }
+  });
   // Add Covdata
   server.post(
     '/api/v1/on-covid-19',
@@ -100,7 +110,9 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        console.log(`${Date.now()}\t\t${req.url.substring(4)}\t\tdone in ${((Date.now() - requestStart) / 1000).toFixed(2)} seconds`);
+        const tlog = `${Date.now()}\t\t${req.url.substring(4)}\t\tdone in ${((Date.now() - requestStart) / 1000).toFixed(2)} seconds`;
+        logs += (`${tlog}\n`);
+        console.log(tlog);
       });
     }
   );
@@ -134,7 +146,9 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        console.log(`${Date.now()}\t\t${req.url.substring(4)}\t\tdone in ${((Date.now() - requestStart) / 1000).toFixed(2)} seconds`);
+        const tlog = `${Date.now()}\t\t${req.url.substring(4)}\t\tdone in ${((Date.now() - requestStart) / 1000).toFixed(2)} seconds`;
+        logs += (`${tlog}\n`);
+        console.log(tlog);
       });
     }
   );
@@ -175,7 +189,9 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        console.log(`${Date.now()}\t\t${req.url.substring(4)}\t\tdone in ${((Date.now() - requestStart) / 1000).toFixed(2)} seconds`);
+        const tlog = `${Date.now()}\t\t${req.url.substring(4)}\t\tdone in ${((Date.now() - requestStart) / 1000).toFixed(2)} seconds`;
+        logs += (`${tlog}\n`);
+        console.log(tlog);
       });
     }
   );
