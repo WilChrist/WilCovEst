@@ -74,6 +74,7 @@ module.exports = (server) => {
   });
   // Get logs
   server.get('/api/v1/on-covid-19/logs', async (req, res, next) => {
+    const requestStart = Date.now();
     try {
       res.setHeader('content-type', 'text/plain');
       res.sendRaw(logs);
@@ -81,6 +82,11 @@ module.exports = (server) => {
     } catch (err) {
       return next(new errors.InvalidContentError(err));
     }
+    res.on('finish', () => {
+      const tlog = `${req.method}\t\t${Date.now()}\t\t${req.url}\t\t${res.statusCode}\t\tdone in ${(Date.now() - requestStart)}ms`;
+      logs += (`${tlog}`); logs += '\n';
+      console.log(tlog);
+    });
   });
   // Add Covdata
   server.post(
@@ -111,7 +117,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${Date.now()}\t\t${req.url.substring(8)}\t\tdone in ${(Date.now() - requestStart)}ms`;
+        const tlog = `${req.method}\t\t${Date.now()}\t\t${req.url}\t\t${res.statusCode}\t\tdone in ${(Date.now() - requestStart)}ms`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
@@ -147,7 +153,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${Date.now()}\t\t${req.url.substring(8)}\t\tdone in ${(Date.now() - requestStart)}ms`;
+        const tlog = `${req.method}\t\t${Date.now()}\t\t${req.url}\t\t${res.statusCode}\t\tdone in ${(Date.now() - requestStart)}ms`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
@@ -190,7 +196,7 @@ module.exports = (server) => {
         return next(new errors.InternalError(err.message));
       }
       res.on('finish', () => {
-        const tlog = `${Date.now()}\t\t${req.url.substring(8)}\t\tdone in ${(Date.now() - requestStart)}ms`;
+        const tlog = `${req.method}\t\t${Date.now()}\t\t${req.url}\t\t${res.statusCode}\t\tdone in ${(Date.now() - requestStart)}ms`;
         logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
