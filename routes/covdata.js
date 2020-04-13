@@ -197,7 +197,7 @@ module.exports = (server) => {
       }
       res.on('finish', () => {
         const tlog = `${req.method}  ${Date.now()}  ${req.url}  ${res.statusCode}  ${(Date.now() - requestStart) <= 9 ? (Date.now() - requestStart).toString().padStart(2, 0) : (Date.now() - requestStart)}ms`;
-        logs += (`${tlog}`); logs += '\r\n';
+        logs += (`${tlog}`); logs += '\n';
         console.log(tlog);
       });
     }
