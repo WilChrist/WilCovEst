@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>WilCovEst FrontEnd Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="a simple single page web app that can allow the data passed to your estimator function to be
+    inputed from a UI. ">
+    <style>
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body,
+        div,
+        form,
+        input,
+        select {
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            color: black;
+            line-height: 22px;
+        }
+
+        h1,
+        h4 {
+            margin: 15px 0 4px;
+            font-weight: 400;
+        }
+
+        h4 {
+            margin: 20px 0 4px;
+            font-weight: 400;
+        }
+
+        span {
+            color: red;
+        }
+
+        .testbox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: inherit;
+            padding: 3px;
+        }
+
+        form {
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 5px #ccc;
+        }
+
+        input {
+            width: calc(100% - 10px);
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            vertical-align: middle;
+        }
+
+        input:hover,
+        textarea:hover,
+        select:hover {
+            outline: none;
+            border: 1px solid #095484;
+            background: #e6eef7;
+        }
+
+        .title-block select,
+        .title-block input {
+            margin-bottom: 10px;
+        }
+
+        select {
+            padding: 7px 0;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            background: transparent;
+        }
+
+        select,
+        table {
+            width: 100%;
+        }
+
+        option {
+            background: #fff;
+        }
+
+        .btn-block {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            width: 150px;
+            padding: 10px;
+            border: none;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            background-color: #095484;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0666a3;
+        }
+
+        @media (min-width: 568px) {
+            .title-block {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .title-block select {
+                width: 30%;
+                margin-bottom: 0;
+            }
+
+            .title-block input {
+                width: 31%;
+                margin-bottom: 0;
+            }
+            label.m4  {
+                width: 25%;
+                margin: 3.6%;
+                margin-bottom: 0;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="testbox">
+        <form action="/">
+            <h1>WilCovEst FrontEnd</h1>
+            <h4>
+                <label class="m4" for="periodType">Period Type<span>*</span></label>
+                <label class="m4" for="timeToElapse">Time to Elapse</label>
+                <label class="m4" for="reportedCases">Reported Cases</label>
+            </h4>
+            <div class="title-block">
+                <select id="periodType" name="periodType" data-period-type>
+                    <option value="days" selected>Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                </select>
+                <input class="name" type="number" name="timeToElapse" id="timeToElapse" placeholder="Time to Elapse" data-time-to-elapse/>
+                <input class="name" type="number" name="reportedCases" id="reportedCases" placeholder="Reported Cases" data-reported-cases/>
+            </div>
+            <h4><label for="population">Population</label><span>*</span></h4>
+            <input type="number" name="population" id="population" data-population/>
+            <h4><label for="totalHospitalBeds">Total Hospital Beds</label><span>*</span></h4>
+            <input type="number" name="totalHospitalBeds" id="totalHospitalBeds" data-total-hospital-beds/>
+            
+                <div class="btn-block">
+                    <button type="submit" href="/" data-go-estimate>Send Data</button>
+                </div>
+        </form>
+    </div>
+</body>
+
+</html>
