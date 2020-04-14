@@ -168,7 +168,7 @@ module.exports = (server) => {
       // Check for JSON
       if (!req.is('application/json')) {
         return next(
-          new errors.InvalidContentError("Expects 'application/json'")
+          new errors.InvalidContentError("Expects 'application/json' data")
         );
       }
 
