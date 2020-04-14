@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "eslint ./src/",
     "start": "node index.js",
-    "dev": "nodemon start"
+    "dev": "nodemon start",
+    "test": "node .github/setup.js"
   },
   "dependencies": {
     "jstoxml": "^1.6.5",
